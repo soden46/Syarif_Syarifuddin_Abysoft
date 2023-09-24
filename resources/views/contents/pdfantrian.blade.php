@@ -55,7 +55,7 @@
 <body>
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title fs-4 text-center">#ANTRIAN-0{{ $antrian->id }}</h2>
+            <h2 class="card-title fs-4 text-center">#ANTRIAN-0{{ $no_antrian }}</h2>
             <div class="pt-2">
                 <table>
                     <tr>

@@ -121,12 +121,12 @@ class AdminController extends Controller
     // Controller Halaman Antrian
     public function antrian($id)
     {
-        $antrian = Peserta::where('nomor_antrian', $id)
+        $antrian = Peserta::where('id', $id)
             ->get()->first();
-        $data = [
-            'antrian' =>  $antrian
-        ];
-        $pdf = Pdf::loadView('contents.pdfantrian', $data)->setPaper('a4', 'landscape');
+        $no_antrian =
+            Peserta::where('id', $id)
+            ->get()->value('nomor_antrian');
+        $pdf = Pdf::loadView('contents.pdfantrian', compact('antrian', 'no_antrian'))->setPaper('a4', 'landscape');
         $name = now()->timestamp . "Antrian-0" . $antrian->id . ".pdf";
         return $pdf->download($name);
     }
